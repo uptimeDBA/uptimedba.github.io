@@ -1,0 +1,32 @@
+---
+layout: default
+comments: true
+---
+<h1>{{ page.title }}</h1>
+<p class="page-meta">
+    {{ page.date | date: "%b %-d, %Y" }} &#8226;
+{% if page.categories %}
+{% for cat in page.categories %}
+<a href="{{ "/category-" | prepend: site.baseurl | append: {{cat}}/">{{cat}}</a>{% unless forloop.last %}, {% endunless%}
+{% endfor %}
+{% endif %}
+
+{% if page.summary %}<div class="summary">{{page.summary}}</div> {% endif %}
+
+{% include toc.html %}
+
+{{ content }}
+<hr/>
+
+<h4>Share this post:</h4>
+
+{% include social_sharing_buttons.html %}
+
+{% include mybio.html %}
+
+{% include disqus.html %}
+
+
+
+
+

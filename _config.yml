@@ -1,0 +1,69 @@
+name: "uptimeDBA"
+description: Paul Steffensen's Personal Blog
+host: 127.0.0.1
+port: 4029
+feedback_email: blog@uptime.co.nz
+sidebar_accordion: true
+disqus_shortname: uptimeDBA
+google_analytics: UA-74789197-1
+markdown: kramdown
+show_audience_label: true
+output: web
+paginate: 15
+timezone: Pacific/Auckland
+
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+
+gems: [jekyll-sitemap, jekyll-mentions, jekyll-redirect-from, jekyll-feed, jekyll-paginate]
+
+url: "http://uptimedba.github.io"
+#baseurl: /
+
+exclude:
+  - _drafts
+  - .idea
+  - _site
+
+
+# these are defaults that get applied to each page or post's frontmatter. leave as is.
+#permalink: /:year/:month/:day/:title/
+permalink: /:year/:month/:title/
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: true
+      search: true
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+      search: true
+  -
+    scope:
+      path: ""
+      type: "tooltips_demo"
+    values:
+      layout: "page"
+      search: true
+  -
+    scope:
+      path: ""
+      type: "revisioncontrol"
+    values:
+      layout: "page"
+      comments: true
+      search: true
+
+

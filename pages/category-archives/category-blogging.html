@@ -1,0 +1,13 @@
+---
+title: "Blogging"
+permalink: /category-blogging/
+categoryName: blogging
+---
+
+<p>Posts in the <b>{{page.title}}</b> category are me thinking out loud. They are non-technical and cover any topic I feel like at the time. They don't appear on the front page of the blog.</p>
+
+    {% for p in site.categories.blogging %}
+<h4 class="categoryArchive"><a href="{{ p.url | prepend: site.baseurl }}">{{p.title}}</a> <span class="postDate"> | {{ p.date | date: "%b %-d, %Y" }}</span>
+</h4>
+{% endfor %}
+

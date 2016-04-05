@@ -1,0 +1,44 @@
+# Topnav single links
+# if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  subcategories:
+    - title: About
+      url: /aboutme/
+
+#Topnav dropdowns
+topnav_dropdowns:
+- title: Topnav dropdowns
+  subcategories:
+
+    - title: Archives
+      items:
+        - title: 2014
+          url: /archives-2014/
+        - title: 2015
+          url: /archives-2015/
+        - title: 2016
+          url: /archives-2016/
+
+#    - title: Tech Notes
+#      items:
+#      - title: JavaScript
+#        url: /javascript/
+
+    - title: Categories
+      items:
+      - title: CockroachDB
+        url: /category-cockroachdb/
+      - title: VirtualBox
+        url: /category-virtualbox/
+      - title: Blogging
+        url: /category-blogging/
+      - title: Dbvisit
+        url: /category-dbvisit/
+      - title: Oracle
+        url: /category-oracle/
+      - title: Logical Replication
+        url: /category-logical-replication/
+      - title: General
+        url: /category-general/
+

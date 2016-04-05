@@ -1,0 +1,13 @@
+---
+title: "Logical Replication"
+permalink: /category-logical-replication/
+categoryName: logical-replication
+---
+
+<p>The following content is in the <b>{{page.title}}</b> category:
+
+    {% for p in site.categories.logical-replication %}
+<h4 class="categoryArchive"><a href="{{ p.url | prepend: site.baseurl }}">{{p.title}}</a> <span class="postDate"> | {{ p.date | date: "%b %-d, %Y" }}</span>
+</h4>
+{% endfor %}
+

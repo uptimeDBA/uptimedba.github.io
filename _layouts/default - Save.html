@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% if page.summary %}{{ page.summary | strip_html | strip_newlines | truncate: 160 }}{% endif %}">
+    <meta name="keywords" content="{{page.tags}}{% if page.tags %}, {% endif %} {{page.keywords}}">
+    <title>{% if page.type == "homepage" %}{{ site.name }} | {{site.description}} {% else %} {{ page.title }} | {{ site.name }} {% endif %}</title>
+    <link rel="stylesheet" href="{{ "/css/syntax.css" | prepend:site.baseurl }}"  type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:700,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ "/css/modern-business.css" | prepend:site.baseurl }}">
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="stylesheet" href="{{ "/css/customstyles.css" | prepend:site.baseurl }}"  type='text/css'>
+    <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="{{ "/js/jquery.navgoco.min.js" | prepend:site.baseurl }}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="{{ "/js/toc.js" | prepend:site.baseurl }}"></script>
+    <script src="{{ "/js/customscripts.js" | prepend:site.baseurl }}"></script>
+    <link rel="shortcut icon" href="http://idratherbewriting.com/favicon.ico" type="image/x-icon">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="{{ "/js/signup.js" | prepend:site.baseurl }}"></script>
+
+    <meta name="twitter:card" content="summary">
+            <meta name="twitter:site" content="@uptimeDBA">
+            <meta name="twitter:creator" content="@uptimeDBA">
+            {% if page.title %}
+    <meta name="twitter:title" content="{{ page.title }}">
+            {% else %}
+    <meta name="twitter:title" content="{{ site.title }}">
+            {% endif %}
+    {% if page.url %}
+    <meta name="twitter:url" content="{{ site.url }}{{ page.url }}">
+            {% endif %}
+    {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description }}">
+            {% else %}
+    <meta name="twitter:description" content="{{ site.description }}">
+            {% endif %}
+    {% if page.image %}
+    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/{{ page.image }}">
+            {% else %}
+    <meta name="twitter:image:src" content="{{ site.url }}/assets/images/me.png">
+            {% endif %}
+    </head>
+
+
+    <body>
+    <div id="masthead">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-7">
+                <div class="siteLogo">
+                   <a href="{{ "/" | prepend: site.baseurl }}">
+                      <img src="{{ "/images/question_mark.png" | prepend: site.baseurl }}" alt="Home" />
+                   </a>
+                </div><!-- /siteLogo -->
+             </div><!-- /col-md-7 -->
+          </div><!-- /row -->
+       </div><!-- /container -->
+            <!-- /cont -->
+       <div class="container">
+          <div class="row">
+             <div class="col-md-12">
+                <div class="top-spacer"> </div>
+             </div><!-- /col-md-12 -->
+          </div><!-- /row -->
+       </div><!-- /container -->
+
+    </div><!-- /masthead -->
+
+            {% include topnav.html %}
+
+            <!-- Page Content -->
+            <div class="container">
+            <!-- Content Row -->
+            <div class="row">
+            <!-- Sidebar Column -->
+            <div class="col-md-3">
+            <div id="sidebarArea">
+            {% include sidebar.html %}
+    {% include social_media_icons.html %}
+    {% include recent_comments.html %}
+        </ul>
+    </div>
+            </div> <!-- /sidebarArea -->
+    </div><!-- /col-md-3 -->
+
+
+    <!-- Content Column -->
+
+    <div class="col-md-9">
+        {{content}}
+
+        <div id="sidebarAreaHomePage">
+            <!-- appears for mobile view only-->
+            <ul id="mytechsidebar" class="nav">
+                {% include notestoc.html %}
+                {% include social_media_icons.html %}
+                {% include recent_comments.html %}
+            </ul>
+        </div> <!-- /sidebarAreaHomePage -->
+
+    </div> <!-- /col-md-9 -->
+
+    </div><!-- /row -->
+    <hr>
+    </div><!-- /container -->
+    </body>
+    {% include google_analytics.html %}
+</html>
