@@ -7,7 +7,7 @@ summary: "VirtualBox Shared Folders are a great but often under-utilized feature
 thumb: virtualbox_logo_124x124.png
 ---
 
-![Feature Image]({{ "/images/virtualbox/virtualbox_logo_124x124.png" | prepend: site.baseurl }})
+![Feature Image](/images/virtualbox/virtualbox_logo_124x124.png)
 
 
 I build a lot of [VirtualBox](https://www.virtualbox.org/) virtual machines. Mostly to test data replication solutions from an Oracle database to somewhere using Oracle's GoldenGate, Dbvisit's Replicate, or Dell's SharePlex.
