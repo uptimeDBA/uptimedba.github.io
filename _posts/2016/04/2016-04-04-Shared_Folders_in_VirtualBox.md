@@ -7,7 +7,7 @@ summary: "VirtualBox Shared Folders are a great but often under-utilized feature
 thumb: virtualbox_logo_124x124.png
 ---
 
-![Feature Image]({{ "/images/VirtualBox/virtualbox_logo_124x124.png" | prepend: site.baseurl }})
+![Feature Image](/images/virtualbox/virtualbox_logo_124x124.png)
 
 
 I build a lot of [VirtualBox](https://www.virtualbox.org/) virtual machines. Mostly to test data replication solutions from an Oracle database to somewhere using Oracle's GoldenGate, Dbvisit's Replicate, or Dell's SharePlex.
@@ -20,12 +20,12 @@ For example, I'm using a Windows host, so I've created a folder called `shared` 
 
 To share this folder with a VirtualBox guest, under the Shared Folders section of the Settings window for the VirtualBox guest, click the `Add a New Share Folder Definition` button.
 
-![Shared Folder Settings](/images/VirtualBox/Shared_Folders_Settings.png)
+![Shared Folder Settings](/images/virtualbox/Shared_Folders_Settings.png)
 
 Specify the folder path on the VirtualBox host to the folder and give it a folder name (same as a share name) that will be used by the VirtualBox guest to access it.
 Check the `Auto-mount` box so the shared folder will be available when the guest machine (re)starts and users log in.
 
-![Shared Folder Settings](/images/VirtualBox/Shared_Folders_Add_Share.png)
+![Shared Folder Settings](/images/virtualbox/Shared_Folders_Add_Share.png)
 
 If the VirtualBox guest is a Linux machine, when the shared folder is mounted, it will appear as a separate file system under a mount point of `/media/sf_<folder_name>`. So for me, that's `/media/sf_shared`. Access to auto-mounted shared folders under Linux is granted via membership of the `vboxsf` group on the VirtualBox guest (which is created by the VirtualBox Guest Additions Installer). Users have to be a member of this group for read/write access.
  
