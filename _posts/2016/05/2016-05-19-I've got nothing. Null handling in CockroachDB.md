@@ -169,9 +169,10 @@ SELECT COUNT(*), COUNT(b), SUM(b), AVG(b), MIN(b), MAX(b) FROM t1;
 ~~~
 
 Points to note:
-- *NULL* values are **not** included in the `COUNT()` of a column that contains *NULL*s. 
-- *NULL* values are **not** considered as high or low values in `MIN()` or `MAX()`.
-- The `AVG()` is defined as `SUM()/COUNT()` which for column b is 2/4 not 2/7.
+
+* *NULL* values are **not** included in the `COUNT()` of a column that contains *NULL*s. 
+* *NULL* values are **not** considered as high or low values in `MIN()` or `MAX()`.
+* The `AVG()` is defined as `SUM()/COUNT()` which for column b is 2/4 not 2/7.
 
 
 ## *NULL*s as Distinct Values
