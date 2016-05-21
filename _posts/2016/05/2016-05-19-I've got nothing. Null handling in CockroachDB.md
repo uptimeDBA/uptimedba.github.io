@@ -227,7 +227,7 @@ By default, CockroachDB  orders *NULL*s **lower**  than the first non-*NULL* val
 
 CockroachDB hasn't implemented this optional extension so you can't change the position of the *NULL*s in the sorting order. I suspect this will be added to CockroachDB SQL in future as PostgreSQL provides the `NULLS FIRST` and `NULLS LAST` clauses.
 
-As an aside, PostgreSQL orders *NULL*s **higher** than the last  non-*NULL* value, which is the same as using the `ORDER BY ... ASC NULLS LAST` or `ORDER BY ... DESC NULLS FIRST` options. Which, by the way, is the same as Oracle but **different** from CockroachDB. I also suspect this placement of *NULL*s within the sort order will be made the same as PostgreSQL soon.
+As an aside, PostgreSQL orders *NULL*s **higher** than the last  non-*NULL* value, which is the same as using the `ORDER BY ... ASC NULLS LAST` or `ORDER BY ... DESC NULLS FIRST` options. Which, by the way, is the same as Oracle but **different** from CockroachDB.
 
 ~~~shell
 SELECT * FROM t1 ORDER BY b;
