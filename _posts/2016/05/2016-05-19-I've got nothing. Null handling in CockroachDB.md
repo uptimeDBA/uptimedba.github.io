@@ -119,6 +119,18 @@ SELECT * FROM t1 WHERE NOT (c = 1 AND b < 10);
 
 In summary, anything compared to a *NULL* is *NULL* (and therefore not TRUE). This behavior is consistent with PostgresSQL as well as all other major RDBMS's.
 
+But how do you use *NULL* in a logic comparison? CockroachDB offers the standard `IS NULL` and `IS NOT NULL` that can be used when comparing *NULL* values.
+
+~~~sql
+SELECT * FROM t1 WHERE b IS NULL AND c IS NOT NULL;
++---+------+---+
+| a |  b   | c |
++---+------+---+
+| 5 | NULL | 0 |
+| 6 | NULL | 1 |
++---+------+---+
+~~~
+
 
 ## NULLs and Arithmetic 
 
@@ -172,7 +184,7 @@ Points to note:
 
 * *NULL* values are **not** included in the `COUNT()` of a column that contains *NULL*s. 
 * *NULL* values are **not** considered as high or low values in `MIN()` or `MAX()`.
-* The `AVG()` is defined as `SUM()/COUNT()` which for column b is 2/4 not 2/7.
+* The `AVG()` is defined as `SUM()/COUNT()` which for column b is 2/4 not 2/7, but see the *NULL*s as Other Values section below.
 
 
 ## *NULL*s as Distinct Values
@@ -204,6 +216,24 @@ SELECT COUNT(DISTINCT b) FROM t1;
 ~~~
 
 
+## *NULL*s as Other Values
+
+Sometimes you may want *NULL* values to be included in calculations like arithmetic or aggregate functions. For example, you may want to calculate the average value of column *b* as being the `SUM()` of all numbers in *b* divided by the total number of rows, regardless of whether *b*'s value is *NULL*. We can include *NULL* values in the calculation by substituting a value for the *NULL* during the calculation. In this case, a value of zero (0) is appropriate. CockroachDB provides a function called `IFNULL(arg1, arg2)` which returns *arg2* if *arg1* is *NULL*.
+
+Let's try the aggregate query again, but include the `IFNULL()` function in the `AVG()` calculation.
+
+~~~sql
+ SELECT COUNT(*), COUNT(b), SUM(b), AVG(b), AVG(IFNULL(b, 0)), MIN(b), MAX(b) FROM t1;
++----------+----------+--------+--------------------+--------------------+--------+--------+
+| COUNT(*) | COUNT(b) | SUM(b) |       AVG(b)       | AVG(IFNULL(b, 0))  | MIN(b) | MAX(b) |
++----------+----------+--------+--------------------+--------------------+--------+--------+
+|        7 |        4 |      2 | 0.5000000000000000 | 0.2857142857142857 |      0 |      1 |
++----------+----------+--------+--------------------+--------------------+--------+--------+
+~~~
+
+Including all the rows from *t1* by replacing the *NULL* values with zero for the purposes of the `AVG()` calculation has made a big difference to the calculation. I wonder how many applications out there are returning `AVG(b)` when they really wanted `AVG(IFNULL(b, 0))`?
+
+
 ## *NULL*s and Set Operations
 
 How *NULL*s behave in a UNION query.
@@ -218,6 +248,9 @@ SELECT b FROM t1 UNION SELECT b FROM t1;
 | NULL |
 +------+
 ~~~
+
+*NULL* values are considered as part of a `UNION` set operation.
+
 
 ## *NULL*s and Sorting
 
@@ -256,6 +289,7 @@ SELECT * FROM t1 ORDER BY b DESC;
 | 5 | NULL |    0 |
 +---+------+------+
 ~~~
+
 
 ## *NULL*s and Unique Constraints 
 
