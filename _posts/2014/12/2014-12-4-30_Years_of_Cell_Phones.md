@@ -4,7 +4,7 @@ categories:
 - blogging
 keywords: communication
 summary: "Looking back over 30 years of cell phones."
-thumb: visualcommunicationthumb.png
+thumb: 30cellphones.jpg
 ---
 
 ![30 Years of Cell Phones](/images/blogging/30cellphones.jpg)
