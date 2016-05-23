@@ -10,7 +10,7 @@ thumb: virtualbox_logo_124x124.png
 ![Feature Image](/images/virtualbox/virtualbox_logo_124x124.png)
 
 
-I build a lot of [VirtualBox](https://www.virtualbox.org/) virtual machines. Mostly to test data replication solutions from an Oracle database to somewhere using Oracle's GoldenGate, Dbvisit's Replicate, or Dell's SharePlex.
+I build a lot of [VirtualBox](//www.virtualbox.org/) virtual machines. Mostly to test data replication solutions from an Oracle database to somewhere using Oracle's GoldenGate, Dbvisit's Replicate, or Dell's SharePlex.
 
 Some of these solutions require a significant amount of scripting to make them easy to set up and repeat. Of course, the scripts need to be accessible from the guest VM but that's not the best place to store them as I'm often destroying and rebuilding VMs  and don't want to lose any of my custom scripts. Enter VirtualBox Shared Folders.
 
@@ -33,6 +33,6 @@ If the VirtualBox guest is a Windows machine, when the shared folder is mounted,
 
 One thing I have discovered is that the shared folder mechanism is not very fast compared to local (VM disk) access. It's great for keeping scripts outside the VM or for transferring files like I've described, but if you're writing large files, or many files like a GoldenGate trail, or a Replicate PLOG files, keep those on the local (VM) disk.
 
-There are more options available when configuring shared folders, I've described the settings I use to solve the problem of preserving custom scripts outside the VM. Please see the [Shared Folder](https://www.virtualbox.org/manual/ch04.html#sharedfolders) section of the VirtualBox Manual for a more complete discussion.
+There are more options available when configuring shared folders, I've described the settings I use to solve the problem of preserving custom scripts outside the VM. Please see the [Shared Folder](//www.virtualbox.org/manual/ch04.html#sharedfolders) section of the VirtualBox Manual for a more complete discussion.
 
 Provided I keep all my customizations outside of the VM, I can reuse the single copy of a script in any number of VMs and safety destroy and rebuild a VM without losing any of my hard work!

@@ -169,7 +169,7 @@ And remember, supplemental logging is only required on the source database for l
 
 There are lots of good articles on the Internet regarding supplemental logging and as it relates to forms of logical replication. As always, I encourage you to read the official Oracle documentation on the topics first.
 
-Julian Dyke has an excellent, in depth look, at supplemental logging  as it relates to GoldenGate [here](http://www.juliandyke.com/Research/GoldenGate/GoldenGateSupplementalLogging.php).
+Julian Dyke has an excellent, in depth look, at supplemental logging  as it relates to GoldenGate [here](//www.juliandyke.com/Research/GoldenGate/GoldenGateSupplementalLogging.php).
 
 
 

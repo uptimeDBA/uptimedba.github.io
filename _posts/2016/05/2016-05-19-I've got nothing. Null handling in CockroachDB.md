@@ -9,16 +9,16 @@ thumb: cockroachdb_logo_100x100.png
 
 ![Feature Image](/images/cockroachdb/cockroachdb_logo_200x200.png)
 
-[CockroachDB](https://www.cockroachlabs.com/) is the new kid on the block and is growing fast. It's Beta software under rapid development and it's SQL layer is maturing fast.
+[CockroachDB](//www.cockroachlabs.com/) is the new kid on the block and is growing fast. It's Beta software under rapid development and it's SQL layer is maturing fast.
 
-While [SQL](https://en.wikipedia.org/wiki/SQL) is a standard, it has gone through many revisions and contains optional functionality that various vendors have chosen to implement, or not. The standard is also incomplete and ambiguous in many places, leading to different interpretations.
+While [SQL](//en.wikipedia.org/wiki/SQL) is a standard, it has gone through many revisions and contains optional functionality that various vendors have chosen to implement, or not. The standard is also incomplete and ambiguous in many places, leading to different interpretations.
 
 One of the design objectives with CockroachDB SQL is to make it as close to the PostgreSQL flavor of SQL as possible. CockroachDB has implemented the PostgreSQL wire protocol which enables any PostgreSQL client to operate with the database.
 In terms of overall compatibility against the SQL standard, PostgreSQL is one of the more compliant implementations.   
 
 This post looks at how CockroachDB handles *NULL* values and how it compares with the SQL standard and other SQL implementations.
 
-The good people over at [SQLite](https://www.sqlite.org/) have a [script](https://www.sqlite.org/nulls.html) for testing *NULL*s and their functionality. I've used the contents of the script for my investigation into CockroachDB. The tests were carried out on Linux using version beta-20160512 of CockroachDB.
+The good people over at [SQLite](//www.sqlite.org/) have a [script](//www.sqlite.org/nulls.html) for testing *NULL*s and their functionality. I've used the contents of the script for my investigation into CockroachDB. The tests were carried out on Linux using version beta-20160512 of CockroachDB.
 
 Let's create a table with some test data.
 
@@ -254,7 +254,7 @@ SELECT b FROM t1 UNION SELECT b FROM t1;
 
 ## *NULL*s and Sorting
 
-Where do *NULL*s sit when sorting by a column containing *NULL* values? The core SQL standard doesn't explicitly define a sort order for *NULL*s but an optional extension to the [SQL:2003](https://en.wikipedia.org/wiki/SQL:2003) standard provided the `NULLS FIRST` and `NULLS LAST` addition to the `ORDER BY` clause.
+Where do *NULL*s sit when sorting by a column containing *NULL* values? The core SQL standard doesn't explicitly define a sort order for *NULL*s but an optional extension to the [SQL:2003](//en.wikipedia.org/wiki/SQL:2003) standard provided the `NULLS FIRST` and `NULLS LAST` addition to the `ORDER BY` clause.
 
 By default, CockroachDB  orders *NULL*s **lower**  than the first non-*NULL* value, which is the same as using the `ORDER BY ... ASC` option. Which, by the way, is the same as MySQL and SQL Server.
 
